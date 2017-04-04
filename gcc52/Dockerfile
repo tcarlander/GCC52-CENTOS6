@@ -15,9 +15,7 @@ RUN mkdir /build &&\
     tar xf mpc-1.0.3.tar.gz &&\
     mv mpc-1.0.3 gcc-5.2.0/mpc &&\
     tar xf mpfr-3.1.5.tar.xz &&\
-    mv mpfr-3.1.5 gcc-5.2.0/mpfr 
-    
-RUN ls  /build/gcc-5.2.0 && \
+    mv mpfr-3.1.5 gcc-5.2.0/mpfr && \
     mkdir /build/gcc-5.2.0/gcc-build && \
     cd /build/gcc-5.2.0/gcc-build && \
     ../configure --prefix=/root/gcc5 \
