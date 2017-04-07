@@ -1,10 +1,10 @@
 FROM centos:6
 
 
-RUN yum install -y gcc gcc-c++ make openssl-devel perl wget libuuid-devel python-devel xz
-
-RUN mkdir /build &&\
-    cd /build &&\
+RUN yum install -y gcc gcc-c++ make openssl-devel perl wget libuuid-devel python-devel xz && \
+    ls && \
+    mkdir /build && \
+    cd /build && \
     wget -q http://ftpmirror.gnu.org/gcc/gcc-5.2.0/gcc-5.2.0.tar.bz2 &&\
     wget -q https://gmplib.org/download/gmp/gmp-6.0.0a.tar.xz &&\
     wget -q ftp://ftp.gnu.org/gnu/mpc/mpc-1.0.3.tar.gz &&\
@@ -31,8 +31,10 @@ RUN mkdir /build &&\
              --build x86_64-redhat-linux-gnu \
              --with-default-libstdcxx-abi=gcc4-compatible && \
     make -j4 && \
-    make install  
-    
+    make install && \
+    yum remove -y  gcc gcc-c++ openssl-devel perl wget libuuid-devel python-devel xz && \
+    rm -rf /build
+
 ENV GCC5_ROOT=/root/gcc5
 ENV PATH=$GCC5_ROOT/bin:$PATH
 ENV MANPATH=$GCC5_ROOT/share/man:MANPATH
