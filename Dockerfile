@@ -1,7 +1,7 @@
 FROM centos:6
 
 ADD build.sh /
-RUN . ./build.sh
+RUN /build.sh
 
 ENV GCC5_ROOT=/root/gcc5
 ENV PATH=$GCC5_ROOT/bin:$PATH
